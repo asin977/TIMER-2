@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="styles/graph.css">
+    <link rel="icon" href="img/dashboard.png">
+</head>
+<body>
+    <div class="header">
+        <img src="img/save-time.png" alt="save-time">
+        <h3 class="name">TimeWise Tracker</h3>
+        <a href="track.html"><img src="img/three.png"></a>
+    </div>
+    <div class="chart-container">
+        <!-- <span id="profileName"></span> -->
+
+        <div id="charts">
+            <h3>📅 Daily Task Durations</h3>
+            <div id="dailyTaskGraph" class="bar-graph-container">
+                <div class="y-axis" id="dailyYAxis" style="font-size:19px;"></div>
+                <div class="bars-wrapper">
+                  <div class="bars" id="dailyBars"></div>
+                  <div class="x-axis" id="dailyXAxis" style="font-size:15px"></div>
+                </div>
+              </div>
+              
+            <h3>📅 Weekly Task Durations</h3>
+            <div id="weeklyBarGraph" class="bar-graph">
+                <div class="y-axis" id="yAxisLabels" style="font-size:19px"></div>
+                <div class="bars" id="barsContainer"></div>
+                <div class="x-axis" id="xAxisLabels" style="font-size:19px"></div>
+            </div>
+            
+            <div id="weeklyGraphContainer">
+               
+                <div id="weeklyGraph"></div>
+                <!-- <button class="show">📊 Show</button> -->
+            </div>
+            <div class="week-btn">
+                <button id="toggleWeekBtn" class="previous-week">📊 Show Previous Weeks</button>
+
+            </div>
+         <!-- <div id="weeklyBarGraph" class="bar-graph">
+                <div class="y-axis" id="yAxisLabels"></div>
+                <div class="bars" id="barsContainer"></div>
+                <div class="x-axis" id="xAxisLabels"></div>
+              </div> -->
+            <!--         
+            <div id="monthlyGraphContainer">
+                <h3>🗓️ Monthly Task Durations</h3>
+                <div id="monthlyGraph"></div>
+            </div> -->
+            
+        </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 TimeWise Tracker. All rights reserved.</p>
+            <p>Built with JavaScript, inspired by the rhythm of life — to help you take back your time.</p>
+            <div class="footer-links">
+                <a href="#about">About</a> 
+                <a href="#features">Features</a> 
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts/graph.js"></script>
+    <script src="scripts/track.js"></script>
+
+</body>
+</html>
+
+

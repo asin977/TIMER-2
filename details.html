@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <link rel="icon" href="work-order.png">
+    <link rel="stylesheet" href="styles/details.css">
+    <link rel="stylesheet" href="styles/track.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="headers">
+          <img src="work-order.png" alt="work-order"> 
+          <h3 class="timer">TimeWise Tracker</h3>
+    </div>
+    <div class="detail-container">
+        <h1>Task Details</h1>
+        <div class="details">
+            <p><strong>Task Name:</strong> <span id="taskName"></span></p>
+            <p><strong>Task Tag:</strong> <span id="taskTag"></span></p>
+            <p><strong>Task Description:</strong> <span id="taskDescription"></span></p>
+            <p><strong>Start Date:</strong> <span id="startDate"></span></p>
+            <p><strong>Start Time:</strong> <span id="startTime"></span></p>
+            <p><strong>End Date:</strong> <span id="endDate"></span></p>
+            <p><strong>End Time:</strong> <span id="endTime"></span></p>
+            <p><strong>Duration:</strong> <span id="taskDuration"></span> minutes</p>
+            <button class="resume" id="resumeTaskBtn">Resume Task</button>
+        </div>
+        <a href="track.html" class="back-button">Back to Dashboard</a>
+    </div>
+    <footer style = "margin-top:295px;">
+         <div class="footer-content">
+          <p>&copy; 2025 TimeWise Tracker. All rights reserved.</p>
+          <p>Built with JavaScript, inspired by the rhythm of life — to help you take back your time.</p>
+          <div class="footer-links">
+              <a href="#about">About</a> 
+              <a href="#features">Features</a> 
+              <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    <script src="scripts/details.js"></script>
+</body>
+</html>
+<!-- when the user entered the taskName,tagName,task decription,and clicked the the start button in the track.html  page the user should be taken to the timerId.html page and starts the live Counting automatically without the start button there and when clicked the stop button all the details about the task like taskName,taskTag ,taskdecription,startTime,endtime,startdate,enddate and duration must be printed and in the track.html page the taskname ,duration must be printed on the table  and there must be an action row on the table with resume button and when clicked this button the user sholuld be taken to the timerId.html page and resume the task and prints the updated details. -->

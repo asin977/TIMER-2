@@ -1,7 +1,7 @@
+
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const index = parseInt(params.get("taskIndex"));
-  const viewOnlyMode = sessionStorage.getItem("viewOnlyMode") === "true";
 
   const userDataStr = sessionStorage.getItem('loggedInUser');
   if (!userDataStr) {
@@ -26,56 +26,58 @@ window.addEventListener("DOMContentLoaded", () => {
   const descEl = document.getElementById("taskDescription");
   const startEl = document.getElementById("taskStartDate");
   const durationEl = document.getElementById("taskDuration");
-  const stopBtn = document.getElementById("stopBtn");
-  const backBtn = document.getElementById("backBtn");
+  const elapsedEl = document.getElementById("elapsedTime");
 
-  // Check if all required elements exist
+
   if (nameEl) nameEl.textContent = task.taskName;
   if (tagEl) tagEl.textContent = task.taskTag;
   if (descEl) descEl.textContent = task.description;
   if (startEl) startEl.textContent = new Date(task.startDate).toLocaleString();
-  if (durationEl) durationEl.textContent = formatDuration(task.duration);
 
-  let timerInterval;
-  let startTime;
+  
+  const recordsList = document.getElementById("recordsList");
+  let totalDuration = 0;
 
-  if (!viewOnlyMode) {
-    startTime = Date.now();
-    timerInterval = setInterval(() => {
-      const elapsed = Math.floor((Date.now() - startTime) / 1000);
-      if (durationEl) durationEl.textContent = formatDuration(task.duration + elapsed);
-    }, 1000);
-  }
+  if (task.sessions && Array.isArray(task.sessions) && task.sessions.length > 0) {
+    task.sessions.forEach((session, idx) => {
+      const duration = session.duration || 0;
+      totalDuration += duration;
 
-  if (stopBtn) {
-    stopBtn.addEventListener("click", () => {
-      if (timerInterval) clearInterval(timerInterval);
-
-      const elapsed = Math.floor((Date.now() - startTime) / 1000);
-      task.duration += elapsed;
-      task.sessions.push({
-        start: new Date(startTime).toISOString(),
-        end: new Date().toISOString(),
-        duration: elapsed
-      });
-
-      localStorage.setItem(userTasksKey, JSON.stringify(taskList));
-      window.location.href = "track.html";
+      const sessionEl = document.createElement("div");
+      sessionEl.classList.add("record-item");
+      sessionEl.innerHTML = `
+        <p><strong>Timer ${idx + 1}:</strong> ${formatDuration(duration)}</p>
+        <p>Start: ${new Date(session.start).toLocaleString()}</p>
+        <p>End: ${new Date(session.end).toLocaleString()}</p>
+      `;
+      recordsList.appendChild(sessionEl);
     });
+  } else {
+    const noSessionEl = document.createElement("p");
+    noSessionEl.textContent = "No sessions recorded.";
+    recordsList.appendChild(noSessionEl);
   }
 
+  
+  const totalDurationEl = document.createElement("div");
+  totalDurationEl.classList.add("record-item", "total-duration");
+  totalDurationEl.innerHTML = `<strong>Total Duration:</strong> ${formatDuration(totalDuration)}`;
+  recordsList.appendChild(totalDurationEl);
+
+  
+  if (elapsedEl) elapsedEl.textContent = formatDuration(totalDuration);
+
+  
+  const stopBtn = document.getElementById("stopBtn");
+  const backBtn = document.getElementById("backBtn");
+  if (stopBtn) stopBtn.style.display = "none";
   if (backBtn) {
     backBtn.addEventListener("click", () => {
-      if (timerInterval) clearInterval(timerInterval);
       window.location.href = "track.html";
     });
   }
-
-  if (viewOnlyMode && stopBtn) {
-    stopBtn.style.display = "none";
-    sessionStorage.removeItem("viewOnlyMode");
-  }
 });
+
 
 function formatDuration(seconds) {
   const hrs = Math.floor(seconds / 3600);

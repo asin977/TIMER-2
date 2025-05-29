@@ -204,3 +204,4 @@ function formatDuration(seconds) {
   const secs = seconds % 60;
   return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
+

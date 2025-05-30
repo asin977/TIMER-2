@@ -119,6 +119,21 @@ function renderTaskTable() {
   }
 }
 
+function showMore() {
+  const btn = document.getElementById("showMoreBtn");
+  const hiddenRows = document.querySelectorAll("#taskTableBody tr.hidden-row");
+
+  if (btn.textContent === "Show More") {
+    hiddenRows.forEach(row => row.classList.remove("hidden-row"));
+    btn.textContent = "Show Less";
+  } else {
+    const rows = document.querySelectorAll("#taskTableBody tr");
+    rows.forEach((row, index) => {
+      if (index >= 5) row.classList.add("hidden-row");
+    });
+    btn.textContent = "Show More";
+  }
+}
 
 
 function toggleEditButtons(index) {
@@ -140,6 +155,15 @@ function toggleEditButtons(index) {
       <button class="save" onclick="saveTask(${index})">💾 Save</button>
       <button class="cancel" onclick="toggleEditButtons(${index})">⛔ Cancel</button>
     `;
+  }
+}
+
+function toggleProfileDetails() {
+  const tooltip = document.getElementById("profileTooltip");
+  if (tooltip.style.display === "block") {
+    tooltip.style.display = "none";
+  } else {
+    tooltip.style.display = "block";
   }
 }
 

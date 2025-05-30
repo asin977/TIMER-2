@@ -188,3 +188,4 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("stop").addEventListener("click", stopTimer);
   document.getElementById("reset").addEventListener("click", resetTimer);
 });
+

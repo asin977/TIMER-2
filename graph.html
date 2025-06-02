@@ -1,75 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DASHBOARD</title>
-    <link rel="stylesheet" href="styles/graph.css">
-    <link rel="icon" href="img/dashboard.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task Duration Charts - Live Update</title>
+<link rel="stylesheet" href="styles/graph.css" />
+<link rel="icon" href="img/dashboard.png" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header img {
+    height: 50px;
+  }
+
+  .name {
+    flex: 1;
+    text-align: center;
+  }
+
+  a img {
+    height: 30px;
+  }
+
+  h2 {
+    margin-top: 40px;
+  }
+
+  #daily-chart, #weekly-chart {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 300px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .bar {
+    width: 30px;
+    background-color: steelblue;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .label {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .chart-container {
+    margin-top: 20px;
+  }
+
+  #toggleChartBtn {
+    margin-top: 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: steelblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        <img src="img/save-time.png" alt="save-time">
-        <h3 class="name">TimeWise Tracker</h3>
-        <a href="track.html"><img src="img/three.png"></a>
-    </div>
+
+<header class="header">
+  <img src="img/save-time.png" alt="save-time" />
+  <h3 class="name">TimeWise Tracker</h3>
+  <a href="track.html"><img src="img/three.png" alt="Dashboard Link" /></a>
+</header>
+
+<main>
+    <h2 id="chartTitle">Daily Task Duration by Task Name (Today) - Live Update</h2>
     <div class="chart-container">
-        <!-- <span id="profileName"></span> -->
-
-        <div id="charts">
-            <h3>📅 Daily Task Durations</h3>
-            <div id="dailyTaskGraph" class="bar-graph-container">
-                <div class="y-axis" id="dailyYAxis" style="font-size:19px;"></div>
-                <div class="bars-wrapper">
-                  <div class="bars" id="dailyBars"></div>
-                  <div class="x-axis" id="dailyXAxis" style="font-size:15px"></div>
-                </div>
-              </div>
-              
-            <h3>📅 Weekly Task Durations</h3>
-            <div id="weeklyBarGraph" class="bar-graph">
-                <div class="y-axis" id="yAxisLabels" style="font-size:19px"></div>
-                <div class="bars" id="barsContainer"></div>
-                <div class="x-axis" id="xAxisLabels" style="font-size:19px"></div>
-            </div>
-            
-            <div id="weeklyGraphContainer">
-               
-                <div id="weeklyGraph"></div>
-                <!-- <button class="show">📊 Show</button> -->
-            </div>
-            <div class="week-btn">
-                <button id="toggleWeekBtn" class="previous-week">📊 Show Previous Weeks</button>
-
-            </div>
-         <!-- <div id="weeklyBarGraph" class="bar-graph">
-                <div class="y-axis" id="yAxisLabels"></div>
-                <div class="bars" id="barsContainer"></div>
-                <div class="x-axis" id="xAxisLabels"></div>
-              </div> -->
-            <!--         
-            <div id="monthlyGraphContainer">
-                <h3>🗓️ Monthly Task Durations</h3>
-                <div id="monthlyGraph"></div>
-            </div> -->
-            
+      <div id="daily-chart" style="display: flex;">Loading daily chart...</div>
+      <div id="weekly-chart" style="display: none;">Loading weekly chart...</div>
+    </div>
+    <button id="toggleBtn">Show Weekly Chart</button>
+  </main>
+  
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2025 TimeWise Tracker. All rights reserved.</p>
+        <p>Built with JavaScript, inspired by the rhythm of life — to help you take back your time.</p>
+        <div class="footer-links">
+            <a href="#about">About</a> 
+            <a href="#features">Features</a> 
+            <a href="#contact">Contact</a>
         </div>
     </div>
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 TimeWise Tracker. All rights reserved.</p>
-            <p>Built with JavaScript, inspired by the rhythm of life — to help you take back your time.</p>
-            <div class="footer-links">
-                <a href="#about">About</a> 
-                <a href="#features">Features</a> 
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </footer>
-    <script src="scripts/graph.js"></script>
-    <script src="scripts/track.js"></script>
+</footer>
+<script src="scripts/graph.js"></script>
+
 
 </body>
 </html>
-
-

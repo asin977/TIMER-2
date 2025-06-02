@@ -36,6 +36,7 @@ function saveTaskToLocalStorage() {
   localStorage.setItem(userTasksKey, JSON.stringify(taskList));
 }
 
+
 function startTask() {
   const name = document.getElementById("taskName").value.trim();
   const tag = document.getElementById("taskTag").value.trim();
